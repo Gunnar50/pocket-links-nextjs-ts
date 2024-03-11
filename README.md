@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Conway's Game of Life React & TypeScript
 
-## Getting Started
+## 🌐 Project
 
-First, run the development server:
+PocketLinks is a simple front-end web application designed to maintain a list of bookmarks
+(links), allowing users to add, edit, and delete links. The app is built using only front-end
+technologies (no backend database). The application relies on the use of redux and local
+storage to persist the user data.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 🏠 [Demo Link](https://pocket-links-nextjs-ts.vercel.app/)
+
+## ✨ Features
+
+- Provide a user-friendly interface for managing a list of bookmarks.
+- Enable adding, editing, and deleting bookmarks.
+- Validate URLs upon submission to ensure they are valid.
+- Implement pagination with 20 items per page
+
+## 🔧 Installation and Setup
+
+Clone the repository
+
+```
+git clone https://github.com/Gunnar50/pocket-links-nextjs-ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Navigate to the project directory
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+cd pocket-links-nextjs-ts
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Install dependecies
 
-## Learn More
+```
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Start the development server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Open localhost on port 3000 on a browser window
 
-## Deploy on Vercel
+```
+http://localhost:3000/
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Technology Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- NextJS
+- React
+- TypeScript
+- ShadCN
+- TailwindCSS
+
+## ⭐️ Show your support
+
+Give a start if you liked and this project helped you!
+
+## 📝 License
+
+This project is open source and available under the MIT License.
