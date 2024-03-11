@@ -8,6 +8,7 @@ import TableActions from "./table-actions";
 export const columns: ColumnDef<Bookmark>[] = [
 	{
 		header: "Title",
+		size: 300,
 		cell: ({ row }) => {
 			return (
 				<div>
@@ -20,7 +21,7 @@ export const columns: ColumnDef<Bookmark>[] = [
 	},
 	{
 		header: "Actions",
-		id: "actions",
+		size: 10,
 		cell: ({ row }) => {
 			return (
 				<TableActions

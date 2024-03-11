@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import {
 	Dialog,
 	DialogContent,
-	DialogDescription,
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
@@ -19,6 +18,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -58,6 +58,7 @@ function Modal({
 	id?: string;
 }) {
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
+	const router = useRouter();
 
 	const dispatch = useDispatch();
 	const form = useForm<z.infer<typeof formSchema>>({
@@ -69,7 +70,6 @@ function Modal({
 	});
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
-		console.log(values);
 		const newId = id || uuidv4();
 		const newBookmark: Bookmark = { ...values, id: newId };
 		if (id && id.trim() !== "") {
@@ -82,6 +82,7 @@ function Modal({
 
 		form.reset();
 		setIsDialogOpen(false);
+		router.push("/results");
 	}
 	return (
 		<Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -89,45 +90,40 @@ function Modal({
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle className="mb-4"></DialogTitle>
-					<DialogDescription>
-						<Form {...form}>
-							<form
-								onSubmit={form.handleSubmit(onSubmit)}
-								className="space-y-8"
-							>
-								{/* TITLE INPUT */}
-								<FormField
-									control={form.control}
-									name="alias"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Title/Alias</FormLabel>
-											<FormControl>
-												<Input placeholder="Your Title..." {...field} />
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
+					<Form {...form}>
+						<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+							{/* TITLE INPUT */}
+							<FormField
+								control={form.control}
+								name="alias"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Title/Alias</FormLabel>
+										<FormControl>
+											<Input placeholder="Your Title..." {...field} />
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
 
-								{/* URL INPUT */}
-								<FormField
-									control={form.control}
-									name="url"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>URL/Link</FormLabel>
-											<FormControl>
-												<Input placeholder="Your URL..." {...field} />
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-								<Button type="submit">Submit</Button>
-							</form>
-						</Form>
-					</DialogDescription>
+							{/* URL INPUT */}
+							<FormField
+								control={form.control}
+								name="url"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>URL/Link</FormLabel>
+										<FormControl>
+											<Input placeholder="Your URL..." {...field} />
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<Button type="submit">Submit</Button>
+						</form>
+					</Form>
 				</DialogHeader>
 			</DialogContent>
 		</Dialog>
