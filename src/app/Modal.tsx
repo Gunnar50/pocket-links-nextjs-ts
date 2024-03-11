@@ -30,14 +30,12 @@ import {
 } from "../lib/features/bookmarks/bookmarksSlice";
 
 const formSchema = z.object({
-	// https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
 	alias: z.string().max(50),
-	url: z
-		.string()
-		.regex(
-			/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
-			"Invalid URL"
-		),
+	url: z.string().regex(
+		// https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
+		/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
+		"Invalid URL"
+	),
 });
 
 export interface Bookmark {
@@ -78,11 +76,11 @@ function Modal({
 		} else {
 			// add new bookmark
 			dispatch(addBookmark(newBookmark));
+			router.push("/results");
 		}
 
 		form.reset();
 		setIsDialogOpen(false);
-		router.push("/results");
 	}
 	return (
 		<Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
