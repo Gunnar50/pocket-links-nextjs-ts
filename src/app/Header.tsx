@@ -9,7 +9,14 @@ function Header() {
 	return (
 		<div className="border-b bg-gray-800 justify-between p-4">
 			<div className="mx-auto flex items-center justify-between max-w-[60rem]">
-				<div>
+				<div className="flex items-center">
+					<Image
+						src="/logo.png"
+						width={30}
+						height={30}
+						alt="logo"
+						className="mr-2"
+					/>
 					<a href="/">PocketLinks</a>
 				</div>
 				<div className="flex items-center gap-4">
